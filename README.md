@@ -1,131 +1,158 @@
-# OnionTrade Pro
+# 🧅 OnionTrade Pro
 
-Professional onion market price intelligence platform built with Laravel + Vite.
+<div align="center">
 
-## Overview
-OnionTrade Pro is a production-ready web application for tracking, recording, comparing, and analyzing onion prices across multiple markets.
+![OnionTrade Pro Logo](public/brand/oniontrade-icon-128.png)
 
-It includes:
-- Market management
-- Member (field agent) management
-- Daily price recording
-- Market comparison dashboard
-- Analytics and forecasting view
-- Authentication with password reset
+### **Professional Market Intelligence & Price Arbitrage Platform**
+*The definitive tool for tracking and analyzing agricultural market trends.*
 
-## Core Features
-- `Dashboard`: quick snapshot of average price, trend, ticker, and market cards
-- `Markets`: CRUD, market profile view, document upload/download
-- `Members`: CRUD with market assignment and status
-- `Prices`: record, update, filter by market/date range, and list history
-- `Compare`: side-by-side market price comparison with best/worst indicators
-- `Analytics`: trend visualization and forecast-oriented insight cards
-- `Auth`: login, register, forgot password, reset password
+[![Laravel Version](https://img.shields.io/badge/Laravel-11.x-F05340?style=for-the-badge&logo=laravel)](https://laravel.com)
+[![PHP Version](https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php)](https://php.net)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Production--Ready-success?style=for-the-badge)]()
 
-## Tech Stack
-- `Backend`: Laravel 13, PHP 8.3+
-- `Frontend`: Blade, TailwindCSS (via Vite), Alpine.js
-- `Build`: Vite 8
-- `Database`: MySQL (or Laravel-supported SQL drivers)
+</div>
 
-## Project Structure
-- `app/Http/Controllers/Api` - feature controllers
-- `app/Models` - Eloquent models
-- `resources/views` - Blade templates
-- `routes/web.php` - web routes
-- `public/brand` - application icon assets (SVG/PNG/ICO)
+---
 
-## Requirements
-- PHP `^8.3`
-- Composer
-- Node.js + npm
-- Database server (MySQL recommended)
+## 🚀 Project Overview
+**OnionTrade Pro** is a production-ready intelligence platform built to bridge the information gap in agricultural trading. By providing real-time price recording, multi-market comparisons, and predictive analytics, it empowers traders and field agents to make data-backed arbitrage decisions.
 
-## Local Setup
-1. Clone and enter the project:
-```bash
-git clone <your-repo-url>
-cd onion-trading-app
-```
+> [!TIP]
+> **Arbitrage Insight:** Use the **Compare** module to visualize price disparities across different regional divisions in real-time.
 
-2. Install backend dependencies:
-```bash
-composer install
-```
+---
 
-3. Create environment file and app key:
-```bash
-cp .env.example .env
-php artisan key:generate
-```
+## ✨ Core Features
 
-4. Configure database in `.env`, then run migrations:
-```bash
-php artisan migrate
-```
+| Feature | Description | Status |
+| :--- | :--- | :---: |
+| **📊 Smart Dashboard** | Real-time tickers for average prices and market trend indicators. | ✅ |
+| **🏪 Market Intelligence** | Comprehensive market profiles with secure PDF document management. | ✅ |
+| **💰 Price Dynamics** | Granular price recording with date-range filtering and historical analysis. | ✅ |
+| **📈 Trend Analytics** | Visualized price trajectories and forecast-oriented insight cards. | ✅ |
+| **👥 Agent Management** | Role-based member assignment for specialized regional coverage. | ✅ |
 
-5. Install frontend dependencies:
-```bash
-npm install
-```
+---
 
-6. Build frontend assets:
-```bash
-npm run build
-```
+## 🛠 Tech Stack
 
-7. Start the app:
-```bash
-php artisan serve
-```
+- **Backend:** **Laravel 11** (Utilizing PHP 8.3 features like Readonly properties and Typed constants)
+- **Frontend:** **Tailwind CSS** & **Alpine.js** for a reactive, low-overhead UI
+- **Build System:** **Vite 8** for lightning-fast asset compilation
+- **Architecture:** Repository-style Controller logic with Eager Loading (SQL optimization)
+- **Security:** Full CSRF protection, secure file hashing, and middleware-guarded routes
 
-Open: `http://127.0.0.1:8000`
+---
+
+## ⚙️ Setup & Installation
+
+Follow these steps to get your local development environment running:
+
+1. **Clone & Dependencies**
+   ```bash
+   git clone <your-repo-url>
+   cd onion-trading-app
+   composer install && npm install
+   ```
+
+2. **Environment Configuration**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   *Note: Update your `.env` with your local database credentials.*
+
+3. **Database & Storage**
+   ```bash
+   php artisan migrate
+   php artisan storage:link
+   ```
+
+4. **Launch**
+   ```bash
+   npm run build
+   php artisan serve
+   ```
+
+---
+
+## 👨‍💻 About the Developer
+
+I am **Pial Mahmud**, a Full-Stack Software Engineer and Social Activist. I hold a **BSc in Computer Science and Engineering** from **Daffodil International University**. My work focuses on building digital solutions that solve real-world economic and environmental challenges.
+
+### 🏛️ Leadership & Impact
+- **Convener:** Private University Students Alliance Goalundo (**PUSAG**).
+- **Activist:** **Ekoj Jagorone**, leading environmental conservation and river protection initiatives.
+
+### 📬 Connect With Me
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/mahmudpial)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/pialmahmud)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=vercel&logoColor=white)](https://portfolio-and-blog-app-fontend.vercel.app/)
+
+---
+<div align="center">
+  Developed with focus and precision by <b>Pial Mahmud</b>
+</div>
+---
 
 
-## Endpoint Table
+---
 
-The app uses web routes (session-authenticated) and resource-style endpoints.
+## 📡 API-style Endpoint Table
 
-| Method | URI | Name | Controller Action | Access |
-|---|---|---|---|---|
+Route list converted into a clean table with:
+- Method
+- URI
+- Route name
+- Controller action
+- Access (Auth/Guest)
+
+| Method | URI | Route Name | Controller Action | Access |
+| :---: | :--- | :--- | :--- | :---: |
 | GET | `/` | `dashboard` | `DashboardController@index` | Auth |
+| GET | `/analytics` | `analytics.index` | `AnalyticsController@index` | Auth |
+| GET | `/compare` | `compare.index` | `CompareController@index` | Auth |
+| GET | `/documents/download/{id}` | `documents.download` | `MarketController@downloadDocument` | Auth |
+| DELETE | `/documents/{id}` | `documents.destroy` | `MarketController@destroyDocument` | Auth |
+| GET | `/forgot-password` | `password.request` | `AuthController@showForgotPassword` | Guest |
+| POST | `/forgot-password` | `password.email` | `AuthController@sendResetLink` | Guest |
 | GET | `/login` | `login` | `AuthController@showLogin` | Guest |
 | POST | `/login` | `login.post` | `AuthController@login` | Guest |
 | POST | `/logout` | `logout` | `AuthController@logout` | Auth |
-| GET | `/register` | `register` | `AuthController@showRegister` | Guest |
-| POST | `/register` | `register.post` | `AuthController@register` | Guest |
-| GET | `/forgot-password` | `password.request` | `AuthController@showForgotPassword` | Guest |
-| POST | `/forgot-password` | `password.email` | `AuthController@sendResetLink` | Guest |
-| GET | `/reset-password/{token}` | `password.reset` | `AuthController@showResetPassword` | Guest |
-| POST | `/reset-password` | `password.update` | `AuthController@resetPassword` | Guest |
 | GET | `/markets` | `markets.index` | `MarketController@index` | Auth |
-| GET | `/markets/create` | `markets.create` | `MarketController@create` | Auth |
 | POST | `/markets` | `markets.store` | `MarketController@store` | Auth |
+| GET | `/markets/create` | `markets.create` | `MarketController@create` | Auth |
 | GET | `/markets/{market}` | `markets.show` | `MarketController@show` | Auth |
-| GET | `/markets/{market}/edit` | `markets.edit` | `MarketController@edit` | Auth |
 | PUT | `/markets/{market}` | `markets.update` | `MarketController@update` | Auth |
 | DELETE | `/markets/{market}` | `markets.destroy` | `MarketController@destroy` | Auth |
 | POST | `/markets/{market}/documents` | `markets.documents.store` | `MarketController@storeDocument` | Auth |
-| GET | `/documents/download/{id}` | `documents.download` | `MarketController@downloadDocument` | Auth |
-| DELETE | `/documents/{id}` | `documents.destroy` | `MarketController@destroyDocument` | Auth |
+| GET | `/markets/{market}/edit` | `markets.edit` | `MarketController@edit` | Auth |
 | GET | `/members` | `members.index` | `MemberController@index` | Auth |
-| GET | `/members/create` | `members.create` | `MemberController@create` | Auth |
 | POST | `/members` | `members.store` | `MemberController@store` | Auth |
-| GET | `/members/{member}/edit` | `members.edit` | `MemberController@edit` | Auth |
+| GET | `/members/create` | `members.create` | `MemberController@create` | Auth |
 | PUT/PATCH | `/members/{member}` | `members.update` | `MemberController@update` | Auth |
 | DELETE | `/members/{member}` | `members.destroy` | `MemberController@destroy` | Auth |
+| GET | `/members/{member}/edit` | `members.edit` | `MemberController@edit` | Auth |
+| GET | `/plans` | `plans` | `Closure (web.php)` | Auth |
 | GET | `/prices` | `prices.index` | `PriceController@index` | Auth |
-| GET | `/prices/create` | `prices.create` | `PriceController@create` | Auth |
 | POST | `/prices` | `prices.store` | `PriceController@store` | Auth |
-| GET | `/prices/{price}/edit` | `prices.edit` | `PriceController@edit` | Auth |
+| GET | `/prices/create` | `prices.create` | `PriceController@create` | Auth |
 | PUT/PATCH | `/prices/{price}` | `prices.update` | `PriceController@update` | Auth |
 | DELETE | `/prices/{price}` | `prices.destroy` | `PriceController@destroy` | Auth |
-| GET | `/compare` | `compare.index` | `CompareController@index` | Auth |
-| GET | `/analytics` | `analytics.index` | `AnalyticsController@index` | Auth |
-| GET | `/plans` | `plans` | Closure view | Auth |
-| GET | `/settings` | `settings` | Closure view | Auth |
+| GET | `/prices/{price}/edit` | `prices.edit` | `PriceController@edit` | Auth |
+| GET | `/register` | `register` | `AuthController@showRegister` | Guest |
+| POST | `/register` | `register.post` | `AuthController@register` | Guest |
+| POST | `/reset-password` | `password.update` | `AuthController@resetPassword` | Guest |
+| GET | `/reset-password/{token}` | `password.reset` | `AuthController@showResetPassword` | Guest |
+| GET | `/settings` | `settings` | `Closure (web.php)` | Auth |
 
-## Screenshots
+---
+
+## 🖼️ Screenshots (New UI)
 
 ### Dashboard
 ![Dashboard](docs/screenshots/01-dashboard.png)
@@ -144,64 +171,3 @@ The app uses web routes (session-authenticated) and resource-style endpoints.
 
 ### Analytics
 ![Analytics](docs/screenshots/06-analytics.png)
-
-## Development Commands
-- Start Vite dev server:
-```bash
-npm run dev
-```
-
-- Build assets for production:
-```bash
-npm run build
-```
-
-- Run tests:
-```bash
-php artisan test
-```
-
-- List routes:
-```bash
-php artisan route:list
-```
-
-## Authentication Notes
-- If no user exists, register from `/register`
-- Password reset flow is available from `/forgot-password`
-
-## Branding Assets
-App icons are available in:
-- `public/favicon.ico` (multi-size ICO)
-- `public/brand/oniontrade-icon.svg`
-- `public/brand/oniontrade-icon-*.png` (multiple sizes)
-
-## Troubleshooting
-### 1) Vite manifest not found
-Error:
-`Vite manifest not found at public/build/manifest.json`
-
-Fix:
-```bash
-npm install
-npm run build
-```
-
-### 2) Styles/JS not updating
-```bash
-php artisan optimize:clear
-npm run dev
-```
-
-### 3) Login fails unexpectedly
-- Confirm email/password
-- Reset password via forgot-password flow
-- Ensure `APP_URL` and session settings are correct in `.env`
-
-## Security
-- Do not commit `.env`
-- Rotate passwords in non-local environments
-- Use HTTPS in production
-
-## License
-This project is licensed under the MIT License.
