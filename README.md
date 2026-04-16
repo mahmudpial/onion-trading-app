@@ -81,6 +81,70 @@ php artisan serve
 
 Open: `http://127.0.0.1:8000`
 
+
+## Endpoint Table
+
+The app uses web routes (session-authenticated) and resource-style endpoints.
+
+| Method | URI | Name | Controller Action | Access |
+|---|---|---|---|---|
+| GET | `/` | `dashboard` | `DashboardController@index` | Auth |
+| GET | `/login` | `login` | `AuthController@showLogin` | Guest |
+| POST | `/login` | `login.post` | `AuthController@login` | Guest |
+| POST | `/logout` | `logout` | `AuthController@logout` | Auth |
+| GET | `/register` | `register` | `AuthController@showRegister` | Guest |
+| POST | `/register` | `register.post` | `AuthController@register` | Guest |
+| GET | `/forgot-password` | `password.request` | `AuthController@showForgotPassword` | Guest |
+| POST | `/forgot-password` | `password.email` | `AuthController@sendResetLink` | Guest |
+| GET | `/reset-password/{token}` | `password.reset` | `AuthController@showResetPassword` | Guest |
+| POST | `/reset-password` | `password.update` | `AuthController@resetPassword` | Guest |
+| GET | `/markets` | `markets.index` | `MarketController@index` | Auth |
+| GET | `/markets/create` | `markets.create` | `MarketController@create` | Auth |
+| POST | `/markets` | `markets.store` | `MarketController@store` | Auth |
+| GET | `/markets/{market}` | `markets.show` | `MarketController@show` | Auth |
+| GET | `/markets/{market}/edit` | `markets.edit` | `MarketController@edit` | Auth |
+| PUT | `/markets/{market}` | `markets.update` | `MarketController@update` | Auth |
+| DELETE | `/markets/{market}` | `markets.destroy` | `MarketController@destroy` | Auth |
+| POST | `/markets/{market}/documents` | `markets.documents.store` | `MarketController@storeDocument` | Auth |
+| GET | `/documents/download/{id}` | `documents.download` | `MarketController@downloadDocument` | Auth |
+| DELETE | `/documents/{id}` | `documents.destroy` | `MarketController@destroyDocument` | Auth |
+| GET | `/members` | `members.index` | `MemberController@index` | Auth |
+| GET | `/members/create` | `members.create` | `MemberController@create` | Auth |
+| POST | `/members` | `members.store` | `MemberController@store` | Auth |
+| GET | `/members/{member}/edit` | `members.edit` | `MemberController@edit` | Auth |
+| PUT/PATCH | `/members/{member}` | `members.update` | `MemberController@update` | Auth |
+| DELETE | `/members/{member}` | `members.destroy` | `MemberController@destroy` | Auth |
+| GET | `/prices` | `prices.index` | `PriceController@index` | Auth |
+| GET | `/prices/create` | `prices.create` | `PriceController@create` | Auth |
+| POST | `/prices` | `prices.store` | `PriceController@store` | Auth |
+| GET | `/prices/{price}/edit` | `prices.edit` | `PriceController@edit` | Auth |
+| PUT/PATCH | `/prices/{price}` | `prices.update` | `PriceController@update` | Auth |
+| DELETE | `/prices/{price}` | `prices.destroy` | `PriceController@destroy` | Auth |
+| GET | `/compare` | `compare.index` | `CompareController@index` | Auth |
+| GET | `/analytics` | `analytics.index` | `AnalyticsController@index` | Auth |
+| GET | `/plans` | `plans` | Closure view | Auth |
+| GET | `/settings` | `settings` | Closure view | Auth |
+
+## Screenshots
+
+### Dashboard
+![Dashboard](docs/screenshots/01-dashboard.png)
+
+### Login
+![Login](docs/screenshots/02-login.png)
+
+### Markets
+![Markets](docs/screenshots/03-markets.png)
+
+### Prices
+![Prices](docs/screenshots/04-prices.png)
+
+### Compare
+![Compare](docs/screenshots/05-compare.png)
+
+### Analytics
+![Analytics](docs/screenshots/06-analytics.png)
+
 ## Development Commands
 - Start Vite dev server:
 ```bash
