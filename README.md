@@ -165,6 +165,10 @@ I am **Pial Mahmud**, a Full-Stack Software Engineer and Social Activist. I hold
 [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=vercel&logoColor=white)](https://portfolio-and-blog-app-fontend.vercel.app/)
 
 ---
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+---
 <div align="center">
   Developed with focus and precision by <b>Pial Mahmud</b>
 </div>
