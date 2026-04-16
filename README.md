@@ -46,62 +46,6 @@
 - **Security:** Full CSRF protection, secure file hashing, and middleware-guarded routes
 
 ---
-
-## ⚙️ Setup & Installation
-
-Follow these steps to get your local development environment running:
-
-1. **Clone & Dependencies**
-   ```bash
-   git clone <your-repo-url>
-   cd onion-trading-app
-   composer install && npm install
-   ```
-
-2. **Environment Configuration**
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
-   *Note: Update your `.env` with your local database credentials.*
-
-3. **Database & Storage**
-   ```bash
-   php artisan migrate
-   php artisan storage:link
-   ```
-
-4. **Launch**
-   ```bash
-   npm run build
-   php artisan serve
-   ```
-
----
-
-## 👨‍💻 About the Developer
-
-I am **Pial Mahmud**, a Full-Stack Software Engineer and Social Activist. I hold a **BSc in Computer Science and Engineering** from **Daffodil International University**. My work focuses on building digital solutions that solve real-world economic and environmental challenges.
-
-### 🏛️ Leadership & Impact
-- **Convener:** Private University Students Alliance Goalundo (**PUSAG**).
-- **Activist:** **Ekoj Jagorone**, leading environmental conservation and river protection initiatives.
-
-### 📬 Connect With Me
-
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/mahmudpial)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/pialmahmud)
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=vercel&logoColor=white)](https://portfolio-and-blog-app-fontend.vercel.app/)
-
----
-<div align="center">
-  Developed with focus and precision by <b>Pial Mahmud</b>
-</div>
----
-
-
----
-
 ## 📡 API-style Endpoint Table
 
 Route list converted into a clean table with:
@@ -171,3 +115,56 @@ Route list converted into a clean table with:
 
 ### Analytics
 ![Analytics](docs/screenshots/06-analytics.png)
+
+---
+## ⚙️ Setup & Installation
+
+Follow these steps to get your local development environment running:
+
+1. **Clone & Dependencies**
+   ```bash
+   git clone <your-repo-url>
+   cd onion-trading-app
+   composer install && npm install
+   ```
+
+2. **Environment Configuration**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   *Note: Update your `.env` with your local database credentials.*
+
+3. **Database & Storage**
+   ```bash
+   php artisan migrate
+   php artisan storage:link
+   ```
+
+4. **Launch**
+   ```bash
+   npm run build
+   php artisan serve
+   ```
+
+---
+
+## 👨‍💻 About the Developer
+
+I am **Pial Mahmud**, a Full-Stack Software Engineer and Social Activist. I hold a **BSc in Computer Science and Engineering** from **Daffodil International University**. My work focuses on building digital solutions that solve real-world economic and environmental challenges.
+
+### 🏛️ Leadership & Impact
+- **Convener:** Private University Students Alliance Goalundo (**PUSAG**).
+- **Activist:** **Ekoj Jagorone**, leading environmental conservation and river protection initiatives.
+
+---
+### 📬 Connect With Me
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/mahmudpial)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/pialmahmud)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=vercel&logoColor=white)](https://portfolio-and-blog-app-fontend.vercel.app/)
+
+---
+<div align="center">
+  Developed with focus and precision by <b>Pial Mahmud</b>
+</div>
