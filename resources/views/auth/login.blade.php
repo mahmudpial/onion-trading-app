@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>লগইন — OnionTrade Pro</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/oniontrade-icon.svg') }}">
-    <link rel="apple-touch-icon" href="{{ asset('brand/oniontrade-icon-180.png') }}">
+
+    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/onion.svg') }}">
+
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -154,17 +154,18 @@
     <div class="w-full max-w-sm relative z-10">
 
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl text-3xl mb-4"
+            {{-- Brand icon: Noto onion --}}
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4"
                 style="background:linear-gradient(135deg,#4ade80,#16a34a);box-shadow:0 8px 30px rgba(74,222,128,.3)">
-                <img src="{{ asset('brand/oniontrade-icon.svg') }}" alt="OnionTrade Icon" class="w-10 h-10">
+                <img src="{{ asset('brand/onion.svg') }}" alt="OnionTrade Icon" class="w-10 h-10">
             </div>
             <h1 style="font-family:Syne,sans-serif;font-weight:800;font-size:22px;color:#f0fdf4">OnionTrade Pro</h1>
             <p class="text-sm mt-1" style="color:#5a7560">পেঁয়াজ বাজার ব্যবস্থাপনা</p>
         </div>
 
         <div class="glass p-8">
-            <h2 style="font-family:Syne,sans-serif;font-weight:700;font-size:18px;color:#f0fdf4;margin-bottom:24px">লগইন
-                করুন</h2>
+            <h2 style="font-family:Syne,sans-serif;font-weight:700;font-size:18px;color:#f0fdf4;margin-bottom:24px">
+                লগইন করুন</h2>
 
             @if(session('success'))
                 <div class="ok">✅ {{ session('success') }}</div>

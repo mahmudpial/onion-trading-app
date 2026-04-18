@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>নতুন পাসওয়ার্ড সেট করুন — OnionTrade Pro</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/oniontrade-icon.svg') }}">
-    <link rel="apple-touch-icon" href="{{ asset('brand/oniontrade-icon-180.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/onion.svg') }}">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -112,9 +110,10 @@
     <div class="w-full max-w-sm relative z-10">
 
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl text-3xl mb-4"
+            {{-- ✅ FIXED: img tag instead of link tag --}}
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4"
                 style="background:linear-gradient(135deg,#4ade80,#16a34a);box-shadow:0 8px 30px rgba(74,222,128,.3)">
-                <img src="{{ asset('brand/oniontrade-icon.svg') }}" alt="OnionTrade Icon" class="w-10 h-10">
+                <img src="{{ asset('brand/onion.svg') }}" alt="OnionTrade" class="w-10 h-10">
             </div>
             <h1 style="font-family:Syne,sans-serif;font-weight:800;font-size:22px;color:#f0fdf4">OnionTrade Pro</h1>
         </div>
@@ -122,8 +121,8 @@
         <div class="glass p-8">
             <div style="text-align:center;margin-bottom:24px">
                 <div style="font-size:36px;margin-bottom:8px">🔒</div>
-                <h2 style="font-family:Syne,sans-serif;font-weight:700;font-size:18px;color:#f0fdf4">নতুন পাসওয়ার্ড সেট
-                    করুন</h2>
+                <h2 style="font-family:Syne,sans-serif;font-weight:700;font-size:18px;color:#f0fdf4">
+                    নতুন পাসওয়ার্ড সেট করুন</h2>
             </div>
 
             @if($errors->any())
@@ -134,7 +133,6 @@
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
 
-                {{-- Email (read-only, pre-filled) --}}
                 <div style="margin-bottom:16px">
                     <label class="lbl">ইমেইল</label>
                     <input type="email" name="email" value="{{ old('email', $email) }}"
@@ -143,7 +141,6 @@
                     @error('email')<p class="field-error">{{ $message }}</p>@enderror
                 </div>
 
-                {{-- New Password --}}
                 <div style="margin-bottom:16px">
                     <label class="lbl">নতুন পাসওয়ার্ড</label>
                     <div style="position:relative">
@@ -158,7 +155,6 @@
                     @error('password')<p class="field-error">{{ $message }}</p>@enderror
                 </div>
 
-                {{-- Confirm Password --}}
                 <div style="margin-bottom:24px">
                     <label class="lbl">পাসওয়ার্ড নিশ্চিত করুন</label>
                     <div style="position:relative">

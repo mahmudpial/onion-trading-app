@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>রেজিস্ট্রেশন — OnionTrade Pro</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/oniontrade-icon.svg') }}">
-    <link rel="apple-touch-icon" href="{{ asset('brand/oniontrade-icon-180.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/onion.svg') }}">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -101,21 +99,6 @@
             margin-top: 6px;
         }
 
-        .strength-weak {
-            background: #f87171;
-            width: 33%;
-        }
-
-        .strength-medium {
-            background: #fbbf24;
-            width: 66%;
-        }
-
-        .strength-strong {
-            background: #4ade80;
-            width: 100%;
-        }
-
         @media (max-width: 640px) {
             .glass {
                 padding: 1.25rem !important;
@@ -133,11 +116,11 @@
 
     <div class="w-full max-w-sm relative z-10">
 
-        {{-- Logo --}}
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl text-3xl mb-4"
+            {{-- ✅ FIXED: img tag instead of link tag --}}
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4"
                 style="background:linear-gradient(135deg,#4ade80,#16a34a);box-shadow:0 8px 30px rgba(74,222,128,.3)">
-                <img src="{{ asset('brand/oniontrade-icon.svg') }}" alt="OnionTrade Icon" class="w-10 h-10">
+                <img src="{{ asset('brand/onion.svg') }}" alt="OnionTrade" class="w-10 h-10">
             </div>
             <h1 style="font-family:Syne,sans-serif;font-weight:800;font-size:22px;color:#f0fdf4">OnionTrade Pro</h1>
             <p class="text-sm mt-1" style="color:#5a7560">পেঁয়াজ বাজার ব্যবস্থাপনা</p>
@@ -158,7 +141,6 @@
             <form method="POST" action="{{ route('register.post') }}" id="reg-form">
                 @csrf
 
-                {{-- Name --}}
                 <div style="margin-bottom:16px">
                     <label class="lbl">পুরো নাম</label>
                     <input type="text" name="name" value="{{ old('name') }}"
@@ -167,7 +149,6 @@
                     @error('name')<p class="field-error">{{ $message }}</p>@enderror
                 </div>
 
-                {{-- Email --}}
                 <div style="margin-bottom:16px">
                     <label class="lbl">ইমেইল</label>
                     <input type="email" name="email" value="{{ old('email') }}"
@@ -176,7 +157,6 @@
                     @error('email')<p class="field-error">{{ $message }}</p>@enderror
                 </div>
 
-                {{-- Password --}}
                 <div style="margin-bottom:16px">
                     <label class="lbl">পাসওয়ার্ড (কমপক্ষে ৮ অক্ষর)</label>
                     <div style="position:relative">
@@ -196,7 +176,6 @@
                     @error('password')<p class="field-error">{{ $message }}</p>@enderror
                 </div>
 
-                {{-- Confirm Password --}}
                 <div style="margin-bottom:24px">
                     <label class="lbl">পাসওয়ার্ড নিশ্চিত করুন</label>
                     <div style="position:relative">
@@ -210,7 +189,6 @@
                     <p id="match-label" style="font-size:10px;margin-top:3px;color:#5a7560"> </p>
                 </div>
 
-                {{-- Terms note --}}
                 <p style="font-size:11px;color:#5a7560;margin-bottom:16px;line-height:1.6">
                     রেজিস্ট্রেশন করলে আপনি আমাদের
                     <span style="color:#9ab09e">সেবার শর্তাবলী</span> ও
@@ -246,13 +224,11 @@
             const fill = document.getElementById('strength-fill');
             const label = document.getElementById('strength-label');
             if (!pw) { fill.style.width = '0'; label.textContent = ' '; return; }
-
             let score = 0;
             if (pw.length >= 8) score++;
             if (/[A-Z]/.test(pw)) score++;
             if (/[0-9]/.test(pw)) score++;
             if (/[^A-Za-z0-9]/.test(pw)) score++;
-
             const levels = [
                 { pct: '25%', color: '#f87171', text: 'দুর্বল পাসওয়ার্ড' },
                 { pct: '50%', color: '#f87171', text: 'দুর্বল পাসওয়ার্ড' },
@@ -267,7 +243,6 @@
             label.textContent = lvl.text;
         }
 
-        // Live password match check
         document.getElementById('pw-confirm').addEventListener('input', function () {
             const pw1 = document.getElementById('pw-reg').value;
             const lbl = document.getElementById('match-label');

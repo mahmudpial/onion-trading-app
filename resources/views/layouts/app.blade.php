@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'পেঁয়াজ ট্রেডিং') - Onion Trade Pro</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/oniontrade-icon.svg') }}">
-    <link rel="apple-touch-icon" href="{{ asset('brand/oniontrade-icon-180.png') }}">
+
+    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/onion.svg') }}">
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" x-init></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -86,17 +85,10 @@
             border-radius: 0.7rem;
             border: 1px solid rgba(16, 185, 129, 0.25);
             background: rgba(16, 185, 129, 0.08);
-            color: #34d399;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-        }
-
-        .footer-brand-mark img {
-            width: 1.45rem;
-            height: 1.45rem;
-            border-radius: 0.35rem;
         }
 
         .footer-brand-title {
@@ -278,7 +270,7 @@
                 flex-wrap: wrap;
             }
 
-            .topbar-actions > * {
+            .topbar-actions>* {
                 flex: 1 1 auto;
             }
 
@@ -316,10 +308,11 @@
                     <div class="flex items-center gap-6">
                         <a href="{{ route('dashboard') }}" class="flex items-center gap-2 group">
                             <div
-                                class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-zinc-950 transition-all duration-300">
-                                <img src="{{ asset('brand/oniontrade-icon-32.png') }}" alt="OnionTrade Icon" class="w-5 h-5 rounded">
+                                class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center transition-all duration-300 group-hover:bg-emerald-500/20">
+                                <img src="{{ asset('brand/onion.svg') }}" alt="Onion" class="w-5 h-5">
                             </div>
-                            <span class="brand-text font-display font-extrabold text-lg tracking-tight text-white uppercase">ONION
+                            <span
+                                class="brand-text font-display font-extrabold text-lg tracking-tight text-white uppercase">ONION
                                 TRADE <span
                                     class="text-emerald-500 text-xs font-black tracking-widest ml-1">PRO</span></span>
                         </a>
@@ -363,7 +356,6 @@
                                 ['route' => 'analytics.index', 'icon' => '📈', 'label' => 'বিশ্লেষণ'],
                             ];
                         @endphp
-
                         @foreach($links as $link)
                             <a href="{{ route($link['route']) }}"
                                 class="flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-200 whitespace-nowrap {{ request()->routeIs(str_replace('.index', '*', $link['route'])) ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.05)]' : 'text-zinc-500 hover:text-zinc-200 hover:bg-zinc-900' }}">
@@ -377,23 +369,18 @@
         </nav>
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            {{-- Header with Title and Dynamic Actions --}}
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                 <div>
                     <h1 class="text-2xl font-black text-white font-display tracking-tight uppercase">
                         @yield('page-title', 'Dashboard')</h1>
                     <p class="text-[10px] font-data font-bold text-zinc-600 uppercase tracking-[0.3em] mt-1">System Node:
-                        PialMahmud_Core
-                    </p>
+                        PialMahmud_Core</p>
                 </div>
-
-                {{-- This is where the buttons (like "Add Member") will appear --}}
                 <div class="topbar-actions flex items-center gap-3">
                     @yield('topbar-actions')
                 </div>
             </div>
 
-            {{-- Flash Messages --}}
             @if(session('success'))
                 <div
                     class="mb-8 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/20 flex items-center justify-between group animate-in fade-in slide-in-from-top-4 duration-500">
@@ -406,11 +393,12 @@
                         </div>
                         <span class="text-sm font-bold text-emerald-200">{{ session('success') }}</span>
                     </div>
-                    <button onclick="this.parentElement.remove()" class="text-zinc-600 hover:text-white transition-colors"><svg
-                            width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <button onclick="this.parentElement.remove()" class="text-zinc-600 hover:text-white transition-colors">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                             <line x1="18" y1="6" x2="6" y2="18" />
                             <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg></button>
+                        </svg>
+                    </button>
                 </div>
             @endif
 
@@ -422,22 +410,27 @@
                 <div class="app-footer-inner">
                     <div class="footer-brand">
                         <div class="footer-brand-mark">
-                            <img src="{{ asset('brand/oniontrade-icon-32.png') }}" alt="OnionTrade Icon">
+                            <img src="{{ asset('brand/onion.svg') }}" alt="Onion" style="width:1.45rem; height:1.45rem;">
                         </div>
                         <div>
                             <div class="footer-brand-title">Onion Trade Professional</div>
                             <div class="footer-brand-meta">System Node: PialMahmud_Core</div>
-                            <p class="footer-brand-desc">Real-time onion market intelligence for trusted pricing, faster decisions, and disciplined trading operations.</p>
+                            <p class="footer-brand-desc">Real-time onion market intelligence for trusted pricing, faster
+                                decisions, and disciplined trading operations.</p>
                         </div>
                     </div>
 
                     <div class="footer-quick">
                         <div class="footer-title">Quick Access</div>
                         <div class="footer-nav">
-                            <a href="{{ route('dashboard') }}" class="footer-link"><span class="footer-link-dot"></span>Dashboard</a>
-                            <a href="{{ route('prices.index') }}" class="footer-link"><span class="footer-link-dot"></span>Price Ledger</a>
-                            <a href="{{ route('compare.index') }}" class="footer-link"><span class="footer-link-dot"></span>Compare</a>
-                            <a href="{{ route('analytics.index') }}" class="footer-link"><span class="footer-link-dot"></span>Analytics</a>
+                            <a href="{{ route('dashboard') }}" class="footer-link"><span
+                                    class="footer-link-dot"></span>Dashboard</a>
+                            <a href="{{ route('prices.index') }}" class="footer-link"><span
+                                    class="footer-link-dot"></span>Price Ledger</a>
+                            <a href="{{ route('compare.index') }}" class="footer-link"><span
+                                    class="footer-link-dot"></span>Compare</a>
+                            <a href="{{ route('analytics.index') }}" class="footer-link"><span
+                                    class="footer-link-dot"></span>Analytics</a>
                         </div>
                     </div>
 

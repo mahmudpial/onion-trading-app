@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Dashboard') — OnionTrade Pro</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/oniontrade-icon.svg') }}">
-    <link rel="apple-touch-icon" href="{{ asset('brand/oniontrade-icon-180.png') }}">
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,8 +46,7 @@
 
     {{-- Chart.js --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
-
-    {{-- Alpine.js (এই স্ক্রিপ্টটি ফাইল আপলোড এবং ইন্টারেকশনের জন্য অবশ্যই দরকার) --}}
+    {{-- Alpine.js --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
@@ -104,14 +100,6 @@
             }
         }
 
-        @media(max-width:480px) {
-            #toast-wrap {
-                right: 10px !important;
-                left: 10px;
-                bottom: 10px !important;
-            }
-        }
-
         @keyframes toastIn {
             from {
                 transform: translateX(20px);
@@ -135,13 +123,17 @@
         style="background:#162019; border-right:1px solid #2a3d2f">
         <div class="p-5" style="border-bottom:1px solid #2a3d2f">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl font-bold"
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center"
                     style="background:linear-gradient(135deg,#4ade80,#16a34a);box-shadow:0 4px 15px rgba(74,222,128,.3)">
-                    <img src="{{ asset('brand/oniontrade-icon.svg') }}" alt="OnionTrade Icon" class="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z" />
+                    </svg>
                 </div>
                 <div>
                     <div class="font-syne font-black text-sm text-green-50">OnionTrade</div>
-                    <div class="text-xs tracking-widest uppercase" style="color:#5a7560">Pro Platform</div>
+                    <div class="text-[10px] tracking-widest uppercase font-bold" style="color:#5a7560">Pro Platform
+                    </div>
                 </div>
             </div>
         </div>
@@ -170,11 +162,12 @@
         <div class="p-3" style="border-top:1px solid #2a3d2f">
             <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#1e2d22">
                 <div class="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-black"
-                    style="background:linear-gradient(135deg,#4ade80,#16a34a)">{{ substr(auth()->user()->name, 0, 1) }}
+                    style="background:linear-gradient(135deg,#4ade80,#16a34a)">
+                    {{ substr(auth()->user()->name ?? 'U', 0, 1) }}
                 </div>
                 <div class="flex-1 min-w-0">
-                    <div class="text-sm font-semibold truncate">{{ auth()->user()->name }}</div>
-                    <div class="text-xs" style="color:#5a7560">{{ ucfirst(auth()->user()->role) }}</div>
+                    <div class="text-sm font-semibold truncate">{{ auth()->user()->name ?? 'User' }}</div>
+                    <div class="text-xs" style="color:#5a7560">{{ ucfirst(auth()->user()->role ?? 'Admin') }}</div>
                 </div>
                 <form method="POST" action="{{ route('logout') }}">@csrf<button type="submit"
                         class="text-xs p-1 rounded" style="color:#5a7560">⏻</button></form>
@@ -200,6 +193,19 @@
         </header>
 
         <main class="flex-1 p-6">@yield('content')</main>
+
+        <footer class="p-6 mt-auto border-t border-border/40">
+            <div class="flex items-center justify-between opacity-60">
+                <div class="flex items-center gap-2">
+                    <p class="text-[11px] font-medium" style="color:#5a7560">© {{ date('Y') }} OnionTrade Pro — Terminal
+                        Active</p>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green animate-pulse"></span>
+                    <span class="text-[10px] uppercase tracking-widest font-bold" style="color:#5a7560">Online</span>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <div id="toast-wrap" class="fixed bottom-6 right-6 z-[9999] flex flex-col gap-2 pointer-events-none"></div>

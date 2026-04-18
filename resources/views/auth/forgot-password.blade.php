@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>পাসওয়ার্ড ভুলে গেছেন — OnionTrade Pro</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/oniontrade-icon.svg') }}">
-    <link rel="apple-touch-icon" href="{{ asset('brand/oniontrade-icon-180.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('brand/onion.svg') }}">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -112,11 +110,11 @@
 
     <div class="w-full max-w-sm relative z-10">
 
-        {{-- Logo --}}
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl text-3xl mb-4"
+            {{-- ✅ FIXED: img tag instead of link tag --}}
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4"
                 style="background:linear-gradient(135deg,#4ade80,#16a34a);box-shadow:0 8px 30px rgba(74,222,128,.3)">
-                <img src="{{ asset('brand/oniontrade-icon.svg') }}" alt="OnionTrade Icon" class="w-10 h-10">
+                <img src="{{ asset('brand/onion.svg') }}" alt="OnionTrade" class="w-10 h-10">
             </div>
             <h1 style="font-family:Syne,sans-serif;font-weight:800;font-size:22px;color:#f0fdf4">OnionTrade Pro</h1>
             <p class="text-sm mt-1" style="color:#5a7560">পেঁয়াজ বাজার ব্যবস্থাপনা</p>
@@ -124,20 +122,17 @@
 
         <div class="glass p-8">
 
-            {{-- Icon --}}
             <div style="text-align:center;margin-bottom:20px">
                 <div style="font-size:40px;margin-bottom:8px">🔑</div>
-                <h2 style="font-family:Syne,sans-serif;font-weight:700;font-size:18px;color:#f0fdf4">পাসওয়ার্ড ভুলে
-                    গেছেন?</h2>
+                <h2 style="font-family:Syne,sans-serif;font-weight:700;font-size:18px;color:#f0fdf4">
+                    পাসওয়ার্ড ভুলে গেছেন?</h2>
                 <p style="font-size:13px;color:#5a7560;margin-top:6px;line-height:1.5">
                     কোনো সমস্যা নেই। আপনার ইমেইল দিন,<br>আমরা রিসেট লিঙ্ক পাঠাবো।
                 </p>
             </div>
 
             @if(session('status'))
-                <div class="ok">
-                    ✉️ {{ session('status') }}
-                </div>
+                <div class="ok">✉️ {{ session('status') }}</div>
             @endif
 
             @if($errors->any())
@@ -147,18 +142,15 @@
             @unless(session('status'))
                 <form method="POST" action="{{ route('password.email') }}">
                     @csrf
-
                     <div style="margin-bottom:20px">
                         <label class="lbl">ইমেইল</label>
                         <input type="email" name="email" value="{{ old('email') }}" class="field"
                             placeholder="আপনার নিবন্ধিত ইমেইল" required autofocus>
                     </div>
-
                     <button type="submit" class="btn-green">পাসওয়ার্ড রিসেট লিঙ্ক পাঠান →</button>
                 </form>
             @endunless
 
-            {{-- Back to login --}}
             <div style="text-align:center;margin-top:20px">
                 <a href="{{ route('login') }}"
                     style="font-size:13px;color:#5a7560;text-decoration:none;display:inline-flex;align-items:center;gap:6px"
