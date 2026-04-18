@@ -17,7 +17,7 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
 
-RUN echo '#!/bin/bash\nphp artisan migrate --force\napache2-foreground' > /start.sh
+RUN echo '#!/bin/bash\nphp artisan migrate --force\nphp artisan config:cache\nphp artisan route:cache\nphp artisan view:cache\napache2-foreground' > /start.sh
 RUN chmod +x /start.sh
 
 CMD ["/bin/bash", "/start.sh"]
