@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Market;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
         // স্ট্যাটিক ডেটা শেয়ার করার জন্য ভিউ কম্পোজার ব্যবহার করা হচ্ছে যেমন সক্রিয় বাজারের তালিকা, যা ড্যাশবোর্ড, বাজার তালিকা এবং দাম তালিকায় দরকার হতে পারে.
         // এই কম্পোজারটি নির্দিষ্ট ভিউগুলিতে সক্রিয় বাজারের তালিকা শেয়ার করবে, যেখানে প্রতিটি বাজারের সাথে তার সর্বশেষ দামও থাকবে.
         View::composer(['dashboard.index', 'markets.index', 'prices.index'], function ($view) {
