@@ -8,7 +8,6 @@
         href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=JetBrains+Mono:wght@400;700&family=Hind+Siliguri:wght@400;600;700&display=swap"
         rel="stylesheet">
     <style>
-        /* ─── PREMIUM DESIGN SYSTEM ──────────────────────────────── */
         :root {
             --bg0: #050a06;
             --bg1: #0c1410;
@@ -79,26 +78,6 @@
             background: #060c08;
         }
 
-        .ot-btn-save {
-            background: linear-gradient(135deg, var(--g0), #059669);
-            color: #050a06;
-            padding: 16px 32px;
-            border-radius: 20px;
-            font-weight: 900;
-            font-size: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s;
-            box-shadow: 0 15px 30px -10px rgba(16, 185, 129, 0.4);
-        }
-
-        .ot-btn-save:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-        }
-
         .font-data {
             font-family: 'JetBrains Mono', monospace;
         }
@@ -124,14 +103,14 @@
     <div class="ot-wrap">
         <div class="max-w-2xl mx-auto relative z-10 pt-8 pb-20">
 
-            {{-- Header Zone --}}
+            {{-- Header --}}
             <div class="mb-10">
                 <a href="{{ route('prices.index') }}"
                     class="group inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-600 hover:text-emerald-400 transition-all mb-6">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                         <path d="m15 18-6-6 6-6" />
                     </svg>
-                    <span>রেকর্ড তালিকায় ফিরে যান</span>
+                    <span>রেকর্ড তালিকায় ফিরে যান</span>
                 </a>
                 <h1 class="text-4xl font-extrabold tracking-tighter text-white font-['Bricolage_Grotesque']">
                     নতুন দাম রেকর্ড করুন
@@ -140,64 +119,102 @@
             </div>
 
             {{-- Form Card --}}
-            <div class="ot-card p-8 md:p-12 relative overflow-hidden">
-                {{-- Aesthetic Glow --}}
+            <div class="ot-card p-8 md:p-12 relative overflow-hidden" x-data="{ step: 1, totalSteps: 2 }" x-cloak>
 
-                <div class="ot-card p-8 md:p-12 relative overflow-hidden" x-data="{ step: 1, totalSteps: 2 }" x-cloak>
+                {{-- Glow --}}
+                <div
+                    class="absolute top-0 right-0 w-80 h-80 bg-emerald-500/5 blur-[100px] -mr-40 -mt-40 pointer-events-none">
+                </div>
 
-                    {{-- Progress Indicator --}}
-                    <div class="mb-8 flex gap-2">
-                        <template x-for="i in totalSteps">
-                            <div class="h-1 flex-1 rounded-full transition-all duration-500"
-                                :class="step >= i ? 'bg-emerald-500' : 'bg-zinc-800'"></div>
-                        </template>
+                {{-- Progress Bar --}}
+                <div class="mb-8 flex gap-2">
+                    <template x-for="i in totalSteps">
+                        <div class="h-1 flex-1 rounded-full transition-all duration-500"
+                            :class="step >= i ? 'bg-emerald-500' : 'bg-zinc-800'"></div>
+                    </template>
+                </div>
+
+                {{-- Step Label --}}
+                <p class="text-[10px] font-data font-bold uppercase tracking-widest text-zinc-600 mb-8">
+                    ধাপ <span x-text="step"></span> / <span x-text="totalSteps"></span>
+                </p>
+
+                <form action="{{ route('prices.store') }}" method="POST" class="space-y-8 relative z-10">
+                    @csrf
+
+                    {{-- Step 1: Market & Date --}}
+                    <div x-show="step === 1" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 translate-x-4">
+                        <div class="space-y-8">
+                            <div>
+                                <label class="ot-label">বাজার নির্বাচন <span class="text-emerald-500">*</span></label>
+                                <select name="market_id" required class="ot-input">
+                                    @foreach($markets as $market)
+                                        <option value="{{ $market->id }}">{{ $market->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <label class="ot-label">রেকর্ড তারিখ <span class="text-emerald-500">*</span></label>
+                                <input type="date" name="date" value="{{ $today }}" required class="ot-input font-data">
+                            </div>
+                        </div>
+
+                        {{-- Next Button --}}
+                        <div class="flex gap-4 mt-10">
+                            <button type="button" @click="step = 2"
+                                class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-zinc-950 font-black text-sm shadow-xl shadow-emerald-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-all">
+                                পরবর্তী
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <path d="m9 18 6-6-6-6" />
+                                </svg>
+                            </button>
+                            <a href="{{ route('prices.index') }}"
+                                class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-zinc-400 font-bold text-sm hover:bg-zinc-800 hover:text-white transition-all">
+                                বাতিল
+                            </a>
+                        </div>
                     </div>
 
-                    <form action="{{ route('prices.store') }}" method="POST" class="space-y-10 relative z-10">
-                        @csrf
-
-                        {{-- Step 1: Market & Date --}}
-                        <div x-show="step === 1" x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 translate-x-4">
-                            <div class="space-y-10">
-                                <div class="group">
-                                    <label class="ot-label">বাজার নির্বাচন <span class="text-emerald-500">*</span></label>
-                                    <select name="market_id" required class="ot-input">
-                                        @foreach($markets as $market)
-                                            <option value="{{ $market->id }}">{{ $market->name }}</option>
-                                        @endforeach
-                                    </select>
+                    {{-- Step 2: Price, Unit, Notes --}}
+                    <div x-show="step === 2" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 translate-x-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <label class="ot-label">মূল্য <span class="text-emerald-500">*</span></label>
+                                <div class="relative">
+                                    <span
+                                        class="absolute left-6 top-1/2 -translate-y-1/2 text-emerald-500 font-bold font-data">৳</span>
+                                    <input type="number" name="price" required min="0" step="0.01"
+                                        class="ot-input pl-12 text-xl font-data font-bold">
                                 </div>
-                                <div>
-                                    <label class="ot-label">রেকর্ড তারিখ <span class="text-emerald-500">*</span></label>
-                                    <input type="date" name="date" value="{{ $today }}" class="ot-input font-data">
-                                </div>
+                            </div>
+                            <div>
+                                <label class="ot-label">পরিমাপ একক</label>
+                                <select name="unit" class="ot-input">
+                                    <option value="KG">কেজি (KG)</option>
+                                    <option value="Maund">মণ (Maund)</option>
+                                    <option value="100KG">১০০ কেজি (100KG)</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="ot-label">অতিরিক্ত তথ্য (ঐচ্ছিক)</label>
+                                <textarea name="notes" rows="4" placeholder="বিশেষ পরিস্থিতি সম্পর্কে লিখুন..."
+                                    class="ot-input resize-none placeholder:text-zinc-800"></textarea>
                             </div>
                         </div>
 
-                        {{-- Step 2: Pricing & Notes --}}
-                        <div x-show="step === 2" x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 translate-x-4">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div>
-                                    <label class="ot-label">মূল্য <span class="text-emerald-500">*</span></label>
-                                    <input type="number" name="price" class="ot-input pl-12 text-xl font-data font-bold">
-                                </div>
-                                <div>
-                                    <label class="ot-label">পরিমাপ একক</label>
-                                    <select name="unit" class="ot-input">
-                                        <option value="KG">কেজি (KG)</option>
-                                        <option value="Maund">মণ (Maund)</option>
-                                    </select>
-                                </div>
-                                <div class="md:col-span-2">
-                                    <label class="ot-label">অতিরিক্ত তথ্য</label>
-                                    <textarea name="notes" rows="4" class="ot-input resize-none"></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                        {{-- Back + Submit --}}
+                        <div class="flex flex-col sm:flex-row gap-4 mt-10">
+                            <button type="button" @click="step = 1"
+                                class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-zinc-400 font-bold text-sm hover:bg-zinc-800 hover:text-white transition-all">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <path d="m15 18-6-6 6-6" />
+                                </svg>
+                                পূর্ববর্তী
+                            </button>
                             <button type="submit"
                                 class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-zinc-950 font-black text-sm shadow-xl shadow-emerald-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-all">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -208,13 +225,10 @@
                                 </svg>
                                 সংরক্ষণ করুন
                             </button>
-                            <a href="{{ route('prices.index') }}"
-                                class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-zinc-400 font-bold text-sm hover:bg-zinc-800 hover:text-white transition-all">
-                                বাতিল
-                            </a>
                         </div>
-                    </form>
-                </div>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
