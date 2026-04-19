@@ -57,7 +57,7 @@ class MarketController extends Controller
         Market::create([
             'name' => $validated['name'],
             'division' => $validated['division'],
-            'off_days' => $validated['off_days'],
+            'off_days' => json_encode($validated['off_days']),
             'opening_time' => $request->opening_time,
             'closing_time' => $request->closing_time,
         ]);

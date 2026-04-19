@@ -26,6 +26,7 @@ class Market extends Model
     protected $casts = [
         'open_days' => 'array',
         'is_active' => 'boolean',
+        'off_days' => 'array',
     ];
 
     // ─── Relationships ─────────────────────────────────────────
